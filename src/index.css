@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-brand-purple-950: #151336;
+  --color-brand-purple-900: #312E81;
+  --color-brand-purple-850: #2A2770;
+  --color-brand-purple-800: #3730A3;
+  --color-brand-purple-700: #4338CA;
+  --color-brand-purple-600: #4F46E5;
+  --color-brand-purple-500: #6366F1;
+  --color-brand-purple-200: #C7D2FE;
+  --color-brand-purple-100: #E0E7FF;
+  --color-brand-purple-50: #EEF2FF;
+
+  --color-brand-amber-400: #FBBF24;
+  --color-brand-amber-500: #F59E0B;
+  --color-brand-amber-600: #D97706;
+  --color-brand-amber-700: #B45309;
+
+  --color-brand-slate-900: #0F172A;
+  --color-brand-slate-800: #1E293B;
+  --color-brand-slate-700: #334155;
+  --color-brand-slate-600: #475569;
+  --color-brand-slate-400: #94A3B8;
+  --color-brand-slate-100: #F1F5F9;
+  --color-brand-slate-50: #F8FAFC;
+
+  --color-brand-lavender: #F8F9FE;
+  --color-brand-softLilac: #F1F0FB;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.bg-topo-pattern {
+  background-image: radial-gradient(circle at 1px 1px, rgba(67, 56, 202, 0.07) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.bg-grid-mesh {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-dots-light {
+  background-image: radial-gradient(rgba(245, 158, 11, 0.25) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+}
+
+@keyframes orbitPulse {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-slow-spin {
+  animation: orbitPulse 38s linear infinite;
+}
+
+.animate-reverse-spin {
+  animation: orbitPulse 48s linear infinite reverse;
+}
