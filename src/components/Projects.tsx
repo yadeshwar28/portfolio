@@ -255,9 +255,9 @@ export const Projects: React.FC = () => {
                       href="https://drive.google.com/drive/folders/1hr-5nku4zTMqReztNyktp06uk8wN5pzT?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#4338CA] hover:text-[#312E81] transition-colors cursor-pointer group"
+                      className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-wider uppercase text-[#4338CA] hover:text-[#312E81] transition-colors cursor-pointer group"
                     >
-                      <span className="group-hover:underline">View Presentation ↗</span>
+                      <span className="group-hover:underline">VIEW PRESENTATION →</span>
                     </a>
                   </div>
                 </div>

@@ -86,7 +86,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
           <nav
             id="desktop-nav-menu"
             aria-label="Primary Navigation"
-            className="hidden xl:flex items-center space-x-6 text-xs font-semibold tracking-wide text-[#E0E7FF] uppercase"
+            className="hidden lg:flex items-center space-x-4 xl:space-x-6 text-xs font-semibold tracking-wide text-[#E0E7FF] uppercase"
           >
             {navLinks.map((link) => {
               const isActive = isLinkActive(link.id);
@@ -128,7 +128,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               aria-expanded={mobileMenuOpen}
               aria-label="Toggle navigation menu"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden p-2.5 rounded-xl text-white/90 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] cursor-pointer"
+              className="lg:hidden p-2.5 rounded-xl text-white/90 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] cursor-pointer"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -139,7 +139,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
         {mobileMenuOpen && (
           <div
             id="mobile-nav-drawer"
-            className="xl:hidden py-4 border-t border-[#4338CA]/70 flex flex-col space-y-3 text-sm font-semibold text-[#E0E7FF] bg-[#312E81] px-2 rounded-b-2xl mb-2"
+            className="lg:hidden py-4 border-t border-[#4338CA]/70 flex flex-col space-y-3 text-sm font-semibold text-[#E0E7FF] bg-[#312E81] px-2 rounded-b-2xl mb-2"
           >
             {navLinks.map((link) => {
               const isActive = isLinkActive(link.id);

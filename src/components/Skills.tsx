@@ -1,8 +1,39 @@
 import React from 'react';
-import { SKILLS_DATA } from '../data/portfolioData';
-import { CheckCircle2, Wrench, Package, Layers } from 'lucide-react';
+import { SKILLS_DATA, SOFTWARE_TOOLS, SoftwareTool } from '../data/portfolioData';
+import {
+  CheckCircle2,
+  FileSpreadsheet,
+  Presentation,
+  BarChart3,
+  Layers,
+  ShoppingBag,
+  Cpu,
+  Database,
+  PackageCheck,
+} from 'lucide-react';
 
 export const Skills: React.FC = () => {
+  const getSoftwareIcon = (iconName: SoftwareTool['iconName']) => {
+    switch (iconName) {
+      case 'excel':
+        return <FileSpreadsheet className="w-5 h-5 text-emerald-600" />;
+      case 'powerpoint':
+        return <Presentation className="w-5 h-5 text-orange-600" />;
+      case 'powerbi':
+        return <BarChart3 className="w-5 h-5 text-amber-600" />;
+      case 'zoho':
+        return <Layers className="w-5 h-5 text-indigo-600" />;
+      case 'shopify':
+        return <ShoppingBag className="w-5 h-5 text-emerald-600" />;
+      case 'sap':
+        return <Cpu className="w-5 h-5 text-blue-600" />;
+      case 'oracle':
+        return <Database className="w-5 h-5 text-red-600" />;
+      default:
+        return <Layers className="w-5 h-5 text-[#4338CA]" />;
+    }
+  };
+
   return (
     <section id="skills" className="py-24 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -12,92 +43,87 @@ export const Skills: React.FC = () => {
             PRACTICAL COMPETENCIES
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
-            Tools &amp; Capabilities
+            Supply Chain &amp; Operations Capabilities
           </h2>
           <p className="text-[#475569] mt-3 text-base">
-            Verified operational workflows and commercial software applied across inventory management, vendor logistics, and business reporting.
+            Core functional competencies across inventory planning, procurement, and fulfillment operations, supported by working software proficiency.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Supply Chain & Operations Card (Span 7) */}
-          <div className="lg:col-span-7 bg-[#F8F9FE] rounded-3xl p-8 sm:p-10 border border-[#E0E7FF] shadow-sm hover:shadow-lg transition">
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-[#EEF2FF] flex items-center justify-center text-[#4338CA]">
-                  <Package className="w-6 h-6" />
-                </div>
-                <div>
-                  <div className="text-xs font-mono font-bold text-[#D97706] uppercase">CORE OPERATIONS</div>
-                  <h3 className="text-xl font-extrabold text-[#0F172A]">Supply Chain &amp; Operations</h3>
-                </div>
-              </div>
-              <span className="text-xs font-mono font-bold text-[#4338CA] bg-[#EEF2FF] px-3 py-1 rounded-full">
-                10 Competencies
-              </span>
+        {/* Core Competencies: Clean 2-Column Equal-Height System */}
+        <div className="max-w-4xl mx-auto mb-20">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2">
+              <PackageCheck className="w-4 h-4 text-[#4338CA]" />
+              <h3 className="text-xs font-extrabold uppercase tracking-wider text-[#4338CA]">
+                Core Competencies (10)
+              </h3>
             </div>
-
-            <p className="text-xs sm:text-sm text-[#475569] leading-relaxed mb-6">
-              Practical ground-level workflows implemented across inventory replenishment cycles, Shopify order flows, vendor sourcing, and 3PL courier logistics.
-            </p>
-
-            {/* Competency Pills Grid (Strictly No Percentage Bars) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {SKILLS_DATA.supplyChain.map((skill) => (
-                <div
-                  key={skill}
-                  className="flex items-center space-x-3 p-3.5 bg-white rounded-2xl border border-[#E0E7FF] shadow-2xs hover:border-[#4338CA] transition"
-                >
-                  <CheckCircle2 className="w-4 h-4 text-[#4338CA] shrink-0" />
-                  <span className="text-xs font-bold text-[#0F172A]">{skill}</span>
-                </div>
-              ))}
-            </div>
+            <span className="text-xs font-mono font-bold text-[#64748B]">
+              Supply Chain &amp; Operations
+            </span>
           </div>
 
-          {/* Tools & Software Card (Span 5) */}
-          <div className="lg:col-span-5 bg-gradient-to-br from-[#312E81] to-[#2A2770] text-white rounded-3xl p-8 sm:p-10 border border-[#4338CA] shadow-lg flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-[#FBBF24]">
-                    <Wrench className="w-6 h-6" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            {SKILLS_DATA.supplyChain.map((skill) => (
+              <div
+                key={skill}
+                className="h-[52px] px-4 flex items-center gap-3 bg-white rounded-xl border border-slate-200/90 shadow-2xs hover:border-[#4338CA] transition"
+              >
+                <CheckCircle2 className="w-4 h-4 text-[#4338CA] shrink-0" />
+                <span className="text-sm font-bold text-[#0F172A] truncate">{skill}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Section 6 & 7: SOFTWARE & SYSTEMS (Editorial Grid) */}
+        <div className="max-w-5xl mx-auto pt-12 border-t border-slate-200/80">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <div className="text-xs font-extrabold uppercase tracking-widest text-[#4338CA] mb-2">
+              APPLIED TOOLKIT
+            </div>
+            <h3 className="text-2xl font-extrabold text-[#0F172A] tracking-tight">
+              SOFTWARE &amp; SYSTEMS
+            </h3>
+            <p className="text-xs sm:text-sm text-[#64748B] mt-2">
+              Self-assessed working knowledge and operational tool proficiency applied across coursework, internships, and projects.
+            </p>
+          </div>
+
+          {/* Software Grid: Identical Height, Identical Progress Bar, Coherent System */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {SOFTWARE_TOOLS.map((tool) => (
+              <div
+                key={tool.name}
+                className="p-5 rounded-2xl bg-[#FCFCFE] border border-slate-200/90 shadow-2xs hover:border-[#C7D2FE] transition flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-10 h-10 rounded-xl bg-white border border-slate-100 shadow-2xs flex items-center justify-center shrink-0 mb-3.5">
+                    {getSoftwareIcon(tool.iconName)}
                   </div>
-                  <div>
-                    <div className="text-xs font-mono font-bold text-[#FBBF24] uppercase">ENTERPRISE TOOLKIT</div>
-                    <h3 className="text-xl font-extrabold text-white">Tools &amp; Systems</h3>
+
+                  <div className="text-sm font-extrabold text-[#0F172A] truncate mb-3">
+                    {tool.name}
                   </div>
                 </div>
-                <span className="text-xs font-mono font-bold text-white bg-white/15 px-3 py-1 rounded-full">
-                  6 Systems
-                </span>
-              </div>
 
-              <p className="text-xs text-[#E0E7FF]/80 leading-relaxed mb-6">
-                Software tools leveraged for operational reporting, inventory tracking, e-commerce dispatch, and enterprise resource planning.
-              </p>
-
-              {/* Tools List */}
-              <div className="space-y-3">
-                {SKILLS_DATA.tools.map((tool) => (
-                  <div
-                    key={tool.name}
-                    className="p-3 bg-white/10 rounded-2xl border border-white/10 flex items-center justify-between hover:bg-white/15 transition"
-                  >
-                    <div>
-                      <div className="text-sm font-bold text-white">{tool.name}</div>
-                      <div className="text-[11px] text-[#C7D2FE]">{tool.category}</div>
-                    </div>
-                    <span className="w-2 h-2 rounded-full bg-[#FBBF24]" />
+                <div>
+                  {/* Subtle Progress Bar */}
+                  <div className="w-full h-1.5 bg-slate-200/70 rounded-full overflow-hidden mb-2">
+                    <div
+                      className="h-full bg-[#4338CA] rounded-full transition-all duration-500"
+                      style={{ width: `${tool.percent}%` }}
+                    />
                   </div>
-                ))}
-              </div>
-            </div>
 
-            <div className="mt-6 pt-4 border-t border-white/10 text-xs text-[#C7D2FE] flex items-center justify-between">
-              <span>Applied In Real Contexts</span>
-              <span className="font-bold text-[#FBBF24]">Strictly Verified</span>
-            </div>
+                  {/* Small Proficiency Label */}
+                  <div className="text-[11px] font-mono font-semibold text-[#64748B]">
+                    {tool.proficiencyLevel}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

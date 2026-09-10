@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { ArrowDown, ArrowUpRight, CheckCircle2, TrendingUp, Layers, PackageCheck } from 'lucide-react';
 
 export const Hero: React.FC = () => {
+  const [isExploreOpen, setIsExploreOpen] = useState(false);
+
   return (
     <section
       id="hero"
@@ -93,6 +95,82 @@ export const Hero: React.FC = () => {
                 <div className="text-xs text-[#E0E7FF]/70 uppercase font-medium mt-1">On-Time Dispatch</div>
               </div>
             </div>
+
+            {/* Signature Interaction: Editorial "EXPLORE MY WORK ↓" Navigation Device */}
+            <div className="pt-6 border-t border-white/10 max-w-xl">
+              <button
+                id="hero-explore-work-toggle"
+                type="button"
+                onClick={() => setIsExploreOpen((prev) => !prev)}
+                aria-expanded={isExploreOpen}
+                aria-controls="hero-explore-options"
+                className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-[#FBBF24] hover:text-white transition-colors cursor-pointer group focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FBBF24] rounded-sm py-1"
+              >
+                <span>EXPLORE MY WORK</span>
+                <span
+                  className={`inline-block transition-transform duration-200 ${
+                    isExploreOpen ? 'rotate-180 text-white' : 'group-hover:translate-y-0.5'
+                  }`}
+                  aria-hidden="true"
+                >
+                  ↓
+                </span>
+              </button>
+
+              {/* Revealed 3 Choices */}
+              <div
+                id="hero-explore-options"
+                className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                  isExploreOpen
+                    ? 'max-h-72 opacity-100 mt-3 pt-3 border-t border-white/10'
+                    : 'max-h-0 opacity-0 mt-0 pt-0 border-t-0 pointer-events-none'
+                }`}
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                  <a
+                    id="explore-nav-experience"
+                    href="#experience"
+                    className="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#FBBF24]/40 transition-colors group block focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FBBF24]"
+                  >
+                    <div className="text-[11px] font-mono font-bold text-[#FBBF24] flex items-center justify-between">
+                      <span>01 EXPERIENCE</span>
+                      <span className="text-white/40 group-hover:text-white group-hover:translate-x-0.5 transition-transform text-xs" aria-hidden="true">→</span>
+                    </div>
+                    <div className="text-xs text-white/90 mt-1 font-medium">
+                      Where I've worked
+                    </div>
+                  </a>
+
+                  <a
+                    id="explore-nav-projects"
+                    href="#projects"
+                    className="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#FBBF24]/40 transition-colors group block focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FBBF24]"
+                  >
+                    <div className="text-[11px] font-mono font-bold text-[#FBBF24] flex items-center justify-between">
+                      <span>02 PROJECTS</span>
+                      <span className="text-white/40 group-hover:text-white group-hover:translate-x-0.5 transition-transform text-xs" aria-hidden="true">→</span>
+                    </div>
+                    <div className="text-xs text-white/90 mt-1 font-medium">
+                      What I've built
+                    </div>
+                  </a>
+
+                  <a
+                    id="explore-nav-direction"
+                    href="#direction"
+                    className="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#FBBF24]/40 transition-colors group block focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FBBF24]"
+                  >
+                    <div className="text-[11px] font-mono font-bold text-[#FBBF24] flex items-center justify-between">
+                      <span>03 DIRECTION</span>
+                      <span className="text-white/40 group-hover:text-white group-hover:translate-x-0.5 transition-transform text-xs" aria-hidden="true">→</span>
+                    </div>
+                    <div className="text-xs text-white/90 mt-1 font-medium">
+                      Where I'm heading
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Hero Abstract Supply Node Matrix Diagram (Pure Vector Architecture - Strictly No Personal Photo) */}
@@ -166,7 +244,7 @@ export const Hero: React.FC = () => {
                 <span>Dispatch</span>
               </div>
               <div className="text-[8px] sm:text-[9px] text-emerald-400 font-mono mt-0.5">
-                SLA: 95%+ On-Time Delivery
+                SLA: 95%+ On-Time Dispatch
               </div>
             </div>
 

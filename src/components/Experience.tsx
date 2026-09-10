@@ -41,8 +41,8 @@ export const Experience: React.FC = () => {
                 }`}
               >
                 {/* Header Row */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-                  <div>
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-4">
+                  <div className="flex-1 min-w-0">
                     <span
                       className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2 ${
                         isDoodlez
@@ -52,26 +52,20 @@ export const Experience: React.FC = () => {
                     >
                       {exp.typeBadge}
                     </span>
-                    <h3 className="text-2xl font-extrabold text-[#0F172A] flex items-center gap-2">
+                    <h3 className="text-xl sm:text-2xl font-extrabold text-[#0F172A] flex flex-wrap items-baseline gap-2">
                       <span>{exp.company}</span>
                       <span className="text-slate-300 font-normal">|</span>
-                      <span className="text-lg font-bold text-[#4338CA]">{exp.role}</span>
+                      <span className="text-base sm:text-lg font-bold text-[#4338CA]">{exp.role}</span>
                     </h3>
-                    <div className="flex items-center gap-4 text-xs font-medium text-[#475569] mt-1.5">
-                      <span className="flex items-center gap-1">
-                        <MapPin className="w-3.5 h-3.5 text-[#D97706]" />
-                        {exp.location}
-                      </span>
-                      <span>•</span>
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3.5 h-3.5 text-[#4338CA]" />
-                        {exp.period}
-                      </span>
+                    <div className="flex items-center gap-1.5 text-xs font-medium text-[#475569] mt-1.5">
+                      <MapPin className="w-3.5 h-3.5 text-[#D97706] shrink-0" />
+                      <span>{exp.location}</span>
                     </div>
                   </div>
 
-                  <div className="text-xs font-mono font-bold text-[#4338CA] bg-white px-4 py-2 rounded-xl border border-slate-200 self-start sm:self-auto shadow-sm">
-                    {exp.period}
+                  <div className="w-[160px] h-[36px] shrink-0 inline-flex items-center justify-center gap-1.5 text-xs font-mono font-bold text-[#4338CA] bg-white px-3 py-1.5 rounded-xl border border-slate-200 shadow-2xs whitespace-nowrap self-start">
+                    <Calendar className="w-3.5 h-3.5 text-[#4338CA] shrink-0" />
+                    <span>{exp.period}</span>
                   </div>
                 </div>
 

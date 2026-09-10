@@ -54,7 +54,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FCFCFE] text-[#0F172A] flex flex-col font-sans selection:bg-[#F59E0B] selection:text-white">
+    <div className="min-h-screen bg-[#FCFCFE] text-[#0F172A] flex flex-col font-sans selection:bg-[#F59E0B] selection:text-white overflow-x-hidden">
       {/* Navigation Header */}
       <Navbar activeSection={activeSection} />
 

@@ -360,6 +360,23 @@ export const PROJECTS: Project[] = [
   },
 ];
 
+export interface SoftwareTool {
+  name: string;
+  proficiencyLevel: 'Advanced' | 'Working Proficiency' | 'Basic Exposure';
+  percent: number;
+  iconName: 'excel' | 'powerpoint' | 'powerbi' | 'zoho' | 'shopify' | 'sap' | 'oracle';
+}
+
+export const SOFTWARE_TOOLS: SoftwareTool[] = [
+  { name: 'Advanced Excel', proficiencyLevel: 'Advanced', percent: 80, iconName: 'excel' },
+  { name: 'PowerPoint', proficiencyLevel: 'Advanced', percent: 80, iconName: 'powerpoint' },
+  { name: 'Power BI', proficiencyLevel: 'Working Proficiency', percent: 65, iconName: 'powerbi' },
+  { name: 'Zoho ERP', proficiencyLevel: 'Working Proficiency', percent: 55, iconName: 'zoho' },
+  { name: 'Shopify', proficiencyLevel: 'Working Proficiency', percent: 70, iconName: 'shopify' },
+  { name: 'SAP', proficiencyLevel: 'Basic Exposure', percent: 35, iconName: 'sap' },
+  { name: 'Oracle', proficiencyLevel: 'Basic Exposure', percent: 35, iconName: 'oracle' },
+];
+
 export const SKILLS_DATA = {
   supplyChain: [
     'Inventory Management',
