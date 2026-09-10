@@ -83,9 +83,9 @@ const SUPPORTING_PROJECTS: ProjectDetailItem[] = [
     },
     details: [
       'Team project as part of Sector Map activity',
-      'Built a Make.com automation workflow based on the PropTech sector',
-      'Created and ran the workflow',
-      'Demonstrated the workflow and explained the modules/nodes',
+      'Make.com automation scenario based on the PropTech sector',
+      'Event-driven workflow with webhook triggers, filtering, and notification nodes',
+      'Demonstrated scenario logic and data flow between connected modules',
     ],
     liveUrl:
       'https://eu1.make.com/public/shared-scenario/UIApBIQz0dG/property-visit-notify-customer-of-poc',
@@ -242,24 +242,6 @@ export const Projects: React.FC = () => {
                   <p className="text-base text-[#475569] leading-relaxed max-w-2xl">
                     A strategy project developed for goSTOPS around creating incremental demand during the July–September period.
                   </p>
-
-                  <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div>
-                      <div className="text-sm font-mono font-bold text-[#0F172A]">
-                        15-Slide Strategy Presentation
-                      </div>
-                    </div>
-
-                    <a
-                      id="view-odc-presentation-btn"
-                      href="https://drive.google.com/drive/folders/1hr-5nku4zTMqReztNyktp06uk8wN5pzT?usp=sharing"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-wider uppercase text-[#4338CA] hover:text-[#312E81] transition-colors cursor-pointer group"
-                    >
-                      <span className="group-hover:underline">VIEW PRESENTATION →</span>
-                    </a>
-                  </div>
                 </div>
 
                 {/* Right Column: Editorial Achievement Focal Point */}
@@ -284,6 +266,23 @@ export const Projects: React.FC = () => {
                     02
                   </div>
                 </div>
+              </div>
+
+              {/* Full-width bottom row: Exactly 1 row on desktop, left item aligned left, link aligned right */}
+              <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="text-sm font-mono font-bold text-[#0F172A] whitespace-nowrap">
+                  15-Slide Strategy Presentation
+                </div>
+
+                <a
+                  id="view-odc-presentation-btn"
+                  href="https://drive.google.com/drive/folders/1hr-5nku4zTMqReztNyktp06uk8wN5pzT?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-wider uppercase text-[#4338CA] hover:text-[#312E81] transition-colors cursor-pointer group whitespace-nowrap"
+                >
+                  <span className="group-hover:underline">VIEW PRESENTATION →</span>
+                </a>
               </div>
             </div>
           </div>
@@ -312,31 +311,42 @@ export const Projects: React.FC = () => {
                     className="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/90 shadow-2xs hover:shadow-xs transition duration-150 flex flex-col justify-between"
                   >
                     <div>
-                      {/* Top Row: Number, Category, and Flow Annotation */}
-                      <div className="flex items-center justify-between gap-2 pb-3 mb-4 border-b border-slate-100">
-                        <div className="flex items-center gap-2">
-                          <span className="font-mono text-base font-black text-[#4338CA]">
+                      {/* Top Row: Number and Category */}
+                      <div className="flex items-center justify-between gap-3 pb-3 mb-4 border-b border-slate-100">
+                        <div className="inline-flex items-center gap-3 shrink-0">
+                          <span className="font-mono text-base font-black text-[#4338CA] leading-none">
                             {project.num}
                           </span>
-                          <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#64748B]">
+                          <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#64748B] leading-none whitespace-nowrap">
                             {project.category}
                           </span>
                         </div>
                         {project.extraMeta && (
-                          <span className="text-[11px] font-mono text-[#D97706] font-bold">
+                          <span className="text-[11px] font-mono text-[#D97706] font-bold shrink-0 truncate">
                             {project.extraMeta}
                           </span>
                         )}
                       </div>
 
                       {/* Title */}
-                      <h3 className="text-lg sm:text-xl font-extrabold text-[#0F172A] tracking-tight mb-2">
+                      <h3 className="text-lg sm:text-xl font-extrabold text-[#0F172A] tracking-tight mb-2.5">
                         {project.title}
                       </h3>
 
-                      {/* Small Editorial System-Flow Annotation */}
-                      <div className="text-[10px] font-mono font-bold text-[#4338CA] tracking-wider mb-3 bg-[#F8FAFC] px-2.5 py-1 rounded inline-block border border-slate-200/60">
-                        {project.flowAnnotation}
+                      {/* Visual Workflow Sequence */}
+                      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-3.5">
+                        {project.flowAnnotation.split('→').map((step, idx, arr) => (
+                          <React.Fragment key={idx}>
+                            <span className="text-[10px] sm:text-[11px] font-mono font-bold text-[#4338CA] bg-[#F8FAFC] px-2 py-0.5 rounded border border-slate-200/70 whitespace-nowrap">
+                              {step.trim()}
+                            </span>
+                            {idx < arr.length - 1 && (
+                              <span className="text-slate-400 text-xs font-mono font-bold select-none shrink-0" aria-hidden="true">
+                                →
+                              </span>
+                            )}
+                          </React.Fragment>
+                        ))}
                       </div>
 
                       {/* Short Context */}

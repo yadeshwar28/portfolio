@@ -34,7 +34,7 @@ export const Experience: React.FC = () => {
               <div
                 key={exp.company}
                 id={`experience-card-${cardId}`}
-                className={`rounded-3xl p-8 sm:p-10 border transition-all duration-300 shadow-sm hover:shadow-xl ${
+                className={`rounded-3xl p-6 sm:p-8 border transition-all duration-300 shadow-sm hover:shadow-xl ${
                   isDoodlez
                     ? 'bg-[#F1F0FB] border-[#C7D2FE] hover:border-[#4338CA]'
                     : 'bg-white border-slate-200 hover:border-[#C7D2FE]'
@@ -71,12 +71,20 @@ export const Experience: React.FC = () => {
 
                 {/* Real Metrics Badges Ribbon */}
                 {exp.metrics && exp.metrics.length > 0 && (
-                  <div className="my-5 p-4 rounded-2xl bg-white border border-slate-100 shadow-xs">
+                  <div className="mt-4 mb-0 p-4 rounded-2xl bg-white border border-slate-100 shadow-xs">
                     <div className="text-[10px] font-extrabold uppercase tracking-wider text-[#D97706] mb-2 flex items-center gap-1">
                       <TrendingUp className="w-3 h-3" />
                       <span>Verified Operational Metrics</span>
                     </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+                    <div
+                      className={`grid gap-3 ${
+                        exp.metrics.length <= 3
+                          ? 'grid-cols-1 sm:grid-cols-3'
+                          : exp.metrics.length === 4
+                          ? 'grid-cols-2 sm:grid-cols-4'
+                          : 'grid-cols-2 sm:grid-cols-3 md:grid-cols-5'
+                      }`}
+                    >
                       {exp.metrics.map((m) => (
                         <div key={m.label} className="p-2 rounded-xl bg-[#F8FAFC] text-center border border-slate-100">
                           <div className="text-base font-black text-[#312E81]">{m.value}</div>
@@ -87,15 +95,15 @@ export const Experience: React.FC = () => {
                   </div>
                 )}
 
-                {/* Expand / Collapse Action Button */}
-                <div className="pt-2 flex items-center justify-between">
+                {/* Expand / Collapse Action Button Row */}
+                <div className="mt-5 pt-4 border-t border-slate-200/80 flex items-center justify-between gap-4">
                   <button
                     id={`experience-btn-${cardId}`}
                     type="button"
                     onClick={() => toggleExpand(exp.company)}
                     aria-expanded={isExpanded}
                     aria-controls={`experience-details-${cardId}`}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider text-[#4338CA] hover:text-[#312E81] bg-[#EEF2FF] hover:bg-[#E0E7FF] border border-[#C7D2FE] transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#4338CA] focus:ring-offset-2"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider text-[#4338CA] hover:text-[#312E81] bg-[#EEF2FF] hover:bg-[#E0E7FF] border border-[#C7D2FE] transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#4338CA] focus:ring-offset-2 shrink-0"
                   >
                     <span>{isExpanded ? 'HIDE DETAILS' : 'VIEW DETAILS'}</span>
                     <ChevronDown
@@ -105,7 +113,7 @@ export const Experience: React.FC = () => {
                       aria-hidden="true"
                     />
                   </button>
-                  <span className="text-[11px] font-mono text-[#64748B]">
+                  <span className="text-xs font-mono font-semibold text-[#64748B] whitespace-nowrap leading-none">
                     {isExpanded ? 'Deliverables Expanded' : `${exp.responsibilities.length} Deliverables`}
                   </span>
                 </div>
@@ -117,7 +125,7 @@ export const Experience: React.FC = () => {
                   aria-labelledby={`experience-btn-${cardId}`}
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${
                     isExpanded
-                      ? 'max-h-[800px] opacity-100 pt-4 mt-4 border-t border-slate-200/80'
+                      ? 'max-h-[800px] opacity-100 pt-5 mt-5 border-t border-slate-200/80'
                       : 'max-h-0 opacity-0 pt-0 mt-0 border-t-0'
                   }`}
                 >

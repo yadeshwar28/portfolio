@@ -314,13 +314,13 @@ export const PROJECTS: Project[] = [
     liveUrl: 'https://eu1.make.com/public/shared-scenario/UIApBIQz0dG/property-visit-notify-customer-of-poc',
     liveButtonText: 'View Workflow',
     details: {
-      context: 'Team project based on the PropTech sector created as part of a Sector Map activity.',
-      myRole: 'Workflow Creator & Technical Demonstrator',
+      context: 'Team project as part of Sector Map activity. Built and ran a Make.com event-driven automation scenario based on the PropTech sector.',
       whatIDid: [
-        'Team project based on the PropTech sector.',
-        'Built and demonstrated a Make.com automation workflow.',
+        'Team project as part of Sector Map activity.',
+        'Make.com automation scenario based on the PropTech sector.',
+        'Event-driven workflow with webhook triggers, filtering, and notification nodes.',
       ],
-      outcome: 'Built and demonstrated a Make.com automation workflow (publicly verified scenario blueprint).',
+      outcome: 'Built and demonstrated a Make.com event-driven automation scenario based on the PropTech sector.',
     },
     metrics: [
       { label: 'Platform', value: 'Make.com' },
