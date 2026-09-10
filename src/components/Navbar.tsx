@@ -23,11 +23,18 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
     { label: 'About', href: '#about', id: 'about' },
     { label: 'Experience', href: '#experience', id: 'experience' },
     { label: 'Projects', href: '#projects', id: 'projects' },
-    { label: 'Artefacts', href: '#artefacts', id: 'artefacts' },
     { label: 'Skills', href: '#skills', id: 'skills' },
     { label: 'Education', href: '#education', id: 'education' },
     { label: 'Contact', href: '#contact', id: 'contact' },
   ];
+
+  const isLinkActive = (linkId: string) => {
+    if (activeSection === linkId) return true;
+    if (linkId === 'hero' && activeSection === 'focus') return true;
+    if (linkId === 'about' && activeSection === 'approach') return true;
+    if (linkId === 'education' && activeSection === 'direction') return true;
+    return false;
+  };
 
   return (
     <header
@@ -66,11 +73,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               </svg>
             </div>
             <div>
-              <div className="text-white font-extrabold tracking-tight text-lg leading-tight flex items-center gap-2">
-                <span>{PERSONAL_INFO.name}</span>
-                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/15 text-[#FBBF24] uppercase tracking-wider">
-                  PGP '26
-                </span>
+              <div className="text-white font-extrabold tracking-tight text-lg leading-tight">
+                {PERSONAL_INFO.name}
               </div>
               <div className="text-[#C7D2FE]/80 text-xs font-medium tracking-wide">
                 Sports &amp; Supply Chain Operations
@@ -81,10 +85,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
           {/* Desktop Navigation Links */}
           <nav
             id="desktop-nav-menu"
+            aria-label="Primary Navigation"
             className="hidden xl:flex items-center space-x-6 text-xs font-semibold tracking-wide text-[#E0E7FF] uppercase"
           >
             {navLinks.map((link) => {
-              const isActive = activeSection === link.id;
+              const isActive = isLinkActive(link.id);
               return (
                 <a
                   key={link.id}
@@ -120,9 +125,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             <button
               id="mobile-menu-toggle-btn"
               type="button"
+              aria-expanded={mobileMenuOpen}
               aria-label="Toggle navigation menu"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden p-2.5 rounded-xl text-white/90 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B]"
+              className="xl:hidden p-2.5 rounded-xl text-white/90 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] cursor-pointer"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -135,21 +141,24 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             id="mobile-nav-drawer"
             className="xl:hidden py-4 border-t border-[#4338CA]/70 flex flex-col space-y-3 text-sm font-semibold text-[#E0E7FF] bg-[#312E81] px-2 rounded-b-2xl mb-2"
           >
-            {navLinks.map((link) => (
-              <a
-                key={link.id}
-                id={`mobile-link-${link.id}`}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`py-2 px-3 rounded-lg transition-colors ${
-                  activeSection === link.id
-                    ? 'bg-white/15 text-[#FBBF24] font-bold'
-                    : 'hover:bg-white/10 hover:text-[#FBBF24]'
-                }`}
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = isLinkActive(link.id);
+              return (
+                <a
+                  key={link.id}
+                  id={`mobile-link-${link.id}`}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`py-2 px-3 rounded-lg transition-colors ${
+                    isActive
+                      ? 'bg-white/15 text-[#FBBF24] font-bold'
+                      : 'hover:bg-white/10 hover:text-[#FBBF24]'
+                  }`}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
             <div className="pt-2 border-t border-[#4338CA]/50">
               <a
                 id="mobile-cta-connect"

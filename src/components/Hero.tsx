@@ -42,12 +42,10 @@ export const Hero: React.FC = () => {
               <span>COLLEGE COURSE &amp; PROFESSIONAL PORTFOLIO</span>
             </div>
 
-            {/* Candidate Identity Header */}
+            {/* Professional Category Label */}
             <div>
-              <div className="text-[#C7D2FE] font-bold text-sm tracking-wider uppercase mb-1 flex items-center gap-2">
-                <span>{PERSONAL_INFO.name}</span>
-                <span className="text-white/30">•</span>
-                <span className="text-[#FBBF24] font-medium text-xs">Gurugram, India</span>
+              <div className="text-[#FBBF24] font-extrabold text-xs sm:text-sm tracking-widest uppercase mb-2">
+                SUPPLY CHAIN • OPERATIONS • SPORTS
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.14]">
                 Building a Career at the <br className="hidden sm:inline" />
@@ -104,31 +102,31 @@ export const Hero: React.FC = () => {
             aria-label="Abstract supply chain value-flow diagram: Supplier to Procurement, Inventory, Fulfillment, and Customer"
           >
             {/* Outer Orbital Rotating Ring */}
-            <div className="w-[330px] h-[330px] sm:w-[420px] sm:h-[420px] rounded-full border border-dashed border-white/20 relative flex items-center justify-center animate-slow-spin">
+            <div className="w-[280px] h-[280px] sm:w-[380px] sm:h-[380px] lg:w-[420px] lg:h-[420px] rounded-full border border-dashed border-white/20 relative flex items-center justify-center animate-slow-spin">
               {/* Orbital Node: Supplier */}
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#F59E0B] shadow-lg shadow-[#F59E0B]/50" />
+              <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#F59E0B] shadow-lg shadow-[#F59E0B]/50" />
               {/* Orbital Node: Fulfillment */}
-              <div className="absolute top-1/2 -right-3 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-emerald-400 shadow-lg shadow-emerald-400/50" />
+              <div className="absolute top-1/2 -right-2.5 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-emerald-400 shadow-lg shadow-emerald-400/50" />
               {/* Orbital Node: Customer */}
-              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-[#C7D2FE]" />
+              <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-[#C7D2FE]" />
               {/* Orbital Node: Procurement */}
-              <div className="absolute top-1/2 -left-3 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-[#FBBF24]" />
+              <div className="absolute top-1/2 -left-2.5 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-[#FBBF24]" />
             </div>
 
             {/* Inner Counter Ring */}
-            <div className="absolute w-[240px] h-[240px] sm:w-[300px] sm:h-[300px] rounded-full border border-[#818CF8]/30 animate-reverse-spin">
-              <div className="absolute bottom-6 right-6 w-3 h-3 rounded-full bg-[#FBBF24]" />
-              <div className="absolute top-6 left-6 w-2.5 h-2.5 rounded-full bg-emerald-400" />
+            <div className="absolute w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] lg:w-[300px] lg:h-[300px] rounded-full border border-[#818CF8]/30 animate-reverse-spin">
+              <div className="absolute bottom-5 right-5 w-3 h-3 rounded-full bg-[#FBBF24]" />
+              <div className="absolute top-5 left-5 w-2.5 h-2.5 rounded-full bg-emerald-400" />
             </div>
 
             {/* Central Core Operations Hub Glyph */}
-            <div className="absolute w-36 h-36 sm:w-44 sm:h-44 rounded-3xl bg-gradient-to-br from-[#4338CA] via-[#3730A3] to-[#151336] p-1.5 shadow-2xl shadow-[#151336] flex flex-col items-center justify-center text-center border border-white/25 z-20">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center mb-1.5">
-                <Layers className="w-6 h-6 text-[#FBBF24]" />
+            <div className="absolute w-32 h-32 sm:w-44 sm:h-44 rounded-3xl bg-gradient-to-br from-[#4338CA] via-[#3730A3] to-[#151336] p-1.5 shadow-2xl shadow-[#151336] flex flex-col items-center justify-center text-center border border-white/25 z-20">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-white/10 flex items-center justify-center mb-1.5">
+                <Layers className="w-5 h-5 sm:w-6 sm:h-6 text-[#FBBF24]" />
               </div>
-              <span className="text-xs font-black uppercase tracking-wider text-white">Operations Hub</span>
-              <span className="text-[10px] text-[#C7D2FE]/90 font-mono mt-0.5">Physical &amp; Digital Flow</span>
-              <div className="mt-1.5 flex items-center gap-1 text-[9px] font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-500/30">
+              <span className="text-[11px] sm:text-xs font-black uppercase tracking-wider text-white">Operations Hub</span>
+              <span className="text-[9px] sm:text-[10px] text-[#C7D2FE]/90 font-mono mt-0.5">Physical &amp; Digital Flow</span>
+              <div className="mt-1.5 flex items-center gap-1 text-[8px] sm:text-[9px] font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-500/30">
                 <CheckCircle2 className="w-2.5 h-2.5" />
                 <span>Active Reconciliations</span>
               </div>
@@ -136,29 +134,29 @@ export const Hero: React.FC = () => {
 
             {/* Floating Glassmorphic Telemetry Chips */}
 
-            {/* Currently Card (Requested specifically in prompt) */}
-            <div className="absolute -top-5 sm:-top-8 left-0 sm:left-2 bg-[#0F172A]/95 border border-[#F59E0B]/40 rounded-2xl p-3 sm:p-3.5 shadow-2xl backdrop-blur-md z-30 max-w-[210px]">
-              <div className="text-[10px] font-extrabold uppercase tracking-wider text-[#FBBF24] flex items-center gap-1.5">
+            {/* Operations Focus Telemetry Card */}
+            <div className="absolute -top-4 sm:-top-8 left-1 sm:left-2 bg-[#0F172A]/95 border border-[#F59E0B]/40 rounded-2xl p-2.5 sm:p-3.5 shadow-2xl backdrop-blur-md z-30 max-w-[190px] sm:max-w-[210px]">
+              <div className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider text-[#FBBF24] flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#FBBF24] animate-ping" />
-                <span>CURRENTLY</span>
+                <span>OPERATIONS FOCUS</span>
               </div>
-              <div className="text-xs font-bold text-white mt-1 leading-snug">
-                {PERSONAL_INFO.currently.program}
+              <div className="text-[11px] sm:text-xs font-bold text-white mt-1 leading-snug">
+                Sports &amp; Athletic Supply Chain
               </div>
-              <div className="text-[11px] font-medium text-[#C7D2FE] mt-0.5">
-                {PERSONAL_INFO.currently.institution}
+              <div className="text-[10px] sm:text-[11px] font-medium text-[#C7D2FE] mt-0.5">
+                Inventory • Fulfillment • Vendors
               </div>
             </div>
 
             {/* Value Chain Stages Strip (Supplier -> Procurement -> Inventory -> Fulfillment -> Customer) */}
-            <div className="absolute -bottom-6 sm:-bottom-8 right-0 sm:right-2 bg-[#0F172A]/95 border border-white/20 rounded-2xl px-4 py-3 shadow-2xl backdrop-blur-md z-30 max-w-[260px]">
-              <div className="flex items-center gap-1.5 mb-1.5">
+            <div className="absolute -bottom-5 sm:-bottom-8 right-1 sm:right-2 bg-[#0F172A]/95 border border-white/20 rounded-2xl px-3 sm:px-4 py-2 sm:py-3 shadow-2xl backdrop-blur-md z-30 max-w-[230px] sm:max-w-[260px]">
+              <div className="flex items-center gap-1.5 mb-1">
                 <PackageCheck className="w-3.5 h-3.5 text-[#FBBF24]" />
-                <span className="text-[10px] font-extrabold text-[#FBBF24] uppercase tracking-wider">
+                <span className="text-[9px] sm:text-[10px] font-extrabold text-[#FBBF24] uppercase tracking-wider">
                   Value Chain Flow
                 </span>
               </div>
-              <div className="flex items-center text-[10px] font-mono text-white/90 gap-1">
+              <div className="flex items-center text-[9px] sm:text-[10px] font-mono text-white/90 gap-1">
                 <span>Supplier</span>
                 <span className="text-[#FBBF24]">→</span>
                 <span>Procure</span>
@@ -167,7 +165,7 @@ export const Hero: React.FC = () => {
                 <span className="text-[#FBBF24]">→</span>
                 <span>Dispatch</span>
               </div>
-              <div className="text-[9px] text-emerald-400 font-mono mt-1">
+              <div className="text-[8px] sm:text-[9px] text-emerald-400 font-mono mt-0.5">
                 SLA: 95%+ On-Time Delivery
               </div>
             </div>

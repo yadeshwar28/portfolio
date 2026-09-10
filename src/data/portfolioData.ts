@@ -1,9 +1,8 @@
-import { Project, Artefact, Experience, EducationItem, CertificationItem } from '../types';
+import { Project, Experience, EducationItem, CertificationItem } from '../types';
 
 export const PERSONAL_INFO = {
   name: 'GNANA YADESWAR',
   monogram: 'GY',
-  cohortBadge: "PGP in Sports Mgmt '26",
   headline: 'Building a Career at the Intersection of Sports & Supply Chain',
   supportingText:
     'I’m building practical experience in Supply Chain & Operations through internships, projects and hands-on business challenges, with a strong interest in applying these skills within the sports industry.',
@@ -18,12 +17,6 @@ export const PERSONAL_INFO = {
     'Sports equipment',
     'Sports retail',
   ],
-  currently: {
-    program: 'PGP in Sports Management & Gaming',
-    institution: 'Masters’ Union',
-    location: 'Gurugram',
-    period: '2026 – Present',
-  },
   contact: {
     email: 'yadeshwar01@gmail.com',
     linkedin: 'https://www.linkedin.com/in/gnanayadeswar/',
@@ -72,13 +65,35 @@ export const CORE_AREAS = [
   },
 ];
 
-export const APPROACH_STAGES = [
+export interface ApproachStageBreakdown {
+  whatILookAt: string;
+  inPractice: string;
+  whyItMatters: string;
+  keyPoints: string[];
+}
+
+export interface ApproachStageItem {
+  stage: string;
+  code: string;
+  title: string;
+  description: string;
+  detail: string;
+  breakdown: ApproachStageBreakdown;
+}
+
+export const APPROACH_STAGES: ApproachStageItem[] = [
   {
     stage: '01',
     code: 'UNDERSTAND',
     title: 'Understand',
     description: 'Understand the requirement, process or operational issue.',
     detail: 'Pinpoint the root constraint on the ground, whether on the inventory sheet, dispatch dock, or vendor lead time.',
+    breakdown: {
+      whatILookAt: 'Understand the requirement, process or operational issue before acting.',
+      inPractice: 'Identify what is happening across inventory, orders, dispatch or vendor coordination.',
+      whyItMatters: 'A clear understanding of the issue helps avoid solving the wrong problem.',
+      keyPoints: ['Constraint Identification', 'Requirement Clarification', 'Process Mapping'],
+    },
   },
   {
     stage: '02',
@@ -86,6 +101,12 @@ export const APPROACH_STAGES = [
     title: 'Track',
     description: 'Work with inventory, orders, vendors and operational information.',
     detail: 'Monitor live order queues, stock reconciliations, and supplier commitments with clean operational records.',
+    breakdown: {
+      whatILookAt: 'Inventory, orders, vendors and operational information.',
+      inPractice: 'Track stock, order status, supplier commitments and operational records.',
+      whyItMatters: 'Accurate tracking helps identify issues early.',
+      keyPoints: ['Inventory Reconciliation', 'Order Queue Status', 'Supplier Commitments'],
+    },
   },
   {
     stage: '03',
@@ -93,6 +114,12 @@ export const APPROACH_STAGES = [
     title: 'Coordinate',
     description: 'Coordinate with suppliers, logistics partners and relevant stakeholders.',
     detail: 'Liaise directly with 3PL courier partners and vendor contacts to prevent fulfillment roadblocks.',
+    breakdown: {
+      whatILookAt: 'Suppliers, logistics partners and relevant stakeholders.',
+      inPractice: 'Coordinate with courier delivery partners, resolve transit escalations, and sync dispatch handoffs.',
+      whyItMatters: 'Proactive coordination prevents fulfillment roadblocks, reduces delivery delays, and aligns cross-functional teams.',
+      keyPoints: ['3PL Courier Follow-Ups', 'Vendor Lead-Time Sync', 'Escalation Resolution'],
+    },
   },
   {
     stage: '04',
@@ -100,6 +127,12 @@ export const APPROACH_STAGES = [
     title: 'Improve',
     description: 'Identify issues and look for practical ways to improve execution.',
     detail: 'Streamline standard operating procedures, reduce return TAT, and minimize stock shortages.',
+    breakdown: {
+      whatILookAt: 'Bottlenecks, recurring fulfillment friction, and workflow gaps.',
+      inPractice: 'Standardize operational reports, streamline reverse logistics to cut return TAT, and automate alerts.',
+      whyItMatters: 'Practical, incremental process improvements build reliable operations, prevent recurring errors, and protect SLAs.',
+      keyPoints: ['Standard Operating Procedures', 'Return-TAT Optimization', 'Workflow Automation'],
+    },
   },
 ];
 
@@ -168,98 +201,99 @@ export const PROJECTS: Project[] = [
   {
     id: 'stockflow',
     title: 'StockFlow | AI-Powered Smart Inventory',
-    category: 'Supply Chain / Technology Project',
+    category: 'Workflow Automation',
     tagline: 'AI-Powered Smart Inventory & Procurement Management for Sports Retail',
     description:
-      'AI-powered inventory and procurement management system designed around sports retail inventory, featuring end-to-end movement tracking and smart reorder recommendations.',
+      'Dedicated inventory intelligence and procurement management web application specifically modeled around sports retail dynamics.',
     features: [
       '15 sports SKUs',
       'Inventory tracking',
       'Stock movements',
       'Inventory valuation',
       'Low-stock alerts',
+      'Supplier management',
       'AI demand forecasting',
-      'Smart reorder recommendations',
+      'Reorder recommendations',
       'Purchase orders',
       'Goods receiving',
       'Supplier invoices',
       'Payments',
       'Supplier performance',
-      'Inventory reporting',
+      'Inventory reports/analytics',
     ],
+    outcome: 'Live deployment on Render with 15 sports SKUs modeled and full procurement cycles.',
     liveUrl: 'https://stockflow-inventory-gfw0.onrender.com/',
-    liveButtonText: 'View Live Project',
+    liveButtonText: 'Live Project',
     details: {
-      context: 'Sports retail businesses encounter sharp demand spikes across equipment and apparel SKUs. StockFlow was built as a dedicated inventory intelligence system specifically modeled around sports retail dynamics.',
+      context: 'Sports retail businesses encounter sharp demand spikes across equipment and apparel SKUs. StockFlow was built as a dedicated smart inventory system specifically modeled around sports retail dynamics.',
       myRole: 'System & Operations Architect',
       whatIDid: [
-        'Structured the 15 sports equipment and apparel catalog data hierarchy with critical reorder thresholds.',
-        'Mapped the full procurement workflow: Purchase Orders -> Goods Receiving -> Supplier Invoices -> Payment settlements.',
-        'Configured automated low-stock triggers, inventory valuation calculations, and AI demand forecasting projections.',
-        'Built interactive supplier scorecard modules tracking on-time replenishment performance and pricing variances.',
+        'Modeled 15 sports SKUs across equipment and apparel categories with inventory tracking and stock movement logs.',
+        'Configured inventory valuation and automated low-stock alerts with critical reorder thresholds.',
+        'Structured supplier management, supplier scorecards, and supplier performance tracking.',
+        'Integrated AI demand forecasting and automated reorder recommendations.',
+        'Built end-to-end procurement cycles: purchase orders, goods receiving, supplier invoices, and payment reconciliation.',
+        'Developed comprehensive inventory reports and analytics dashboards.',
       ],
-      outcome: 'A fully functional cloud web application running live on Render, providing live inventory visibility and intelligent purchase orders.',
-      learning: 'Accurate inventory planning depends on strict goods-receiving reconciliations to ensure AI forecasting operates on clean baseline stock data.',
+      outcome: 'Live functional web application deployed on Render with active procurement cycles.',
     },
     metrics: [
-      { label: 'Sports SKUs Modeled', value: '15' },
-      { label: 'Core Workflows', value: '13 Integrated' },
-      { label: 'Architecture', value: 'AI Forecasting + ERP' },
+      { label: 'Sports SKUs Modeled', value: '15 SKUs' },
+      { label: 'Integrated Modules', value: '13 Workflows' },
+      { label: 'Platform Status', value: 'Live on Render' },
     ],
     accentColor: '#4F46E5',
   },
   {
     id: 'drop-shipping-taara',
-    title: 'Drop Shipping Challenge — Team Taara',
-    category: 'Business Challenge',
-    tagline: 'High-Velocity Sourcing, E-Commerce Storefront & Razorpay Gateway Setup',
+    title: 'Team Taara | Drop-Shipping Challenge',
+    category: 'Competitions & Challenges',
+    tagline: 'Product Sourcing, E-Commerce Storefront & Razorpay Payment Integration',
     description:
-      'One-day campus drop-shipping business venture focused on crystals and gemstones. Managed supplier coordination, product sourcing, store development, and live digital payments.',
-    product: 'Crystals and gemstones',
+      'One-day drop-shipping business venture focused on crystals and gemstones. Product sourcing and vendor/supplier coordination, e-commerce storefront development, and payment gateway integration.',
+    product: 'Crystals & Gemstones',
+    tools: ['E-Commerce Website', 'Razorpay (Payment Gateway)', 'Vendor Coordination'],
     contribution: [
-      'Product sourcing',
-      'Vendor/supplier coordination',
-      'E-commerce website development',
-      'Razorpay integration',
+      'Product sourcing and vendor/supplier coordination',
+      'Built an e-commerce website for the venture',
+      'Integrated Razorpay as the payment gateway',
     ],
-    outcome: 'The team generated ₹97,000 in revenue in one day at the DLF College drop-shipping event.',
+    outcome: '₹97,000 team revenue in one day (Team Revenue).',
     details: {
-      context: 'High-intensity, single-day collegiate drop-shipping challenge at DLF College requiring teams to source product lines, launch an e-commerce channel, and fulfill real orders.',
-      myRole: 'Operations, Sourcing & E-commerce Lead (Team Taara)',
+      context: 'High-intensity, single-day drop-shipping business venture focused on crystals and gemstones. Teams coordinated real-time vendor supply, digital store checkout, and customer order fulfillment.',
+      myRole: 'Product Sourcing & Vendor Coordination',
       whatIDid: [
-        'Negotiated wholesale acquisition pricing with local gemstone and crystal suppliers.',
-        'Set up the digital product catalog with structured pricing, SKU variants, and high-converting product descriptions.',
-        'Developed the live e-commerce website and securely configured the Razorpay payment gateway for instant QR and card checkouts.',
-        'Monitored live order fulfillment and immediate stock handoffs during high customer rush hours.',
+        'Product sourcing and vendor/supplier coordination.',
+        'Built an e-commerce website for the venture.',
+        'Integrated Razorpay as the payment gateway for instant, frictionless digital checkouts.',
       ],
-      outcome: 'The team generated ₹97,000 in revenue in one day at the DLF College drop-shipping event (Team Revenue).',
-      learning: 'Eliminating checkout friction with seamless UPI/Razorpay integrations and maintaining vendor sync under tight time limits determines live event revenue.',
+      outcome: '₹97,000 team revenue in one day (Team Revenue).',
     },
     metrics: [
       { label: 'Team Revenue (1 Day)', value: '₹97,000' },
-      { label: 'Product Segment', value: 'Crystals & Gems' },
-      { label: 'Payment Gateway', value: 'Razorpay Live' },
+      { label: 'Product Category', value: 'Crystals & Gemstones' },
+      { label: 'Payment Gateway', value: 'Razorpay' },
     ],
     accentColor: '#F59E0B',
   },
   {
     id: 'odc-challenge',
     title: 'ODC Challenge — GoStop',
-    category: 'Challenge / Competition',
-    tagline: 'National Cohort Business Challenge Finalist & Runner-Up',
+    category: 'Competitions & Challenges',
+    tagline: 'Conducted by GoStop • Top 20 from Entire Cohort • Runner-Up / 2nd Place',
     description:
       'Prestigious business challenge conducted by GoStop across an extensive multi-disciplinary student cohort.',
+    outcome: 'Selected among Top 20 from the entire cohort. Finished Runner-up / 2nd place in the final.',
     information: 'Conducted by GoStop. Selected among Top 20 from the entire cohort. Finished Runner-up / 2nd place in the final.',
     details: {
-      context: 'GoStop Organised Development Challenge (ODC) testing operational strategy, analytical problem-solving, and cross-functional execution.',
-      myRole: 'Competitor / Finalist',
+      context: 'Organised Development Challenge (ODC) conducted by GoStop testing operational problem-solving and strategic execution.',
+      myRole: 'Cohort Competitor & Finalist',
       whatIDid: [
-        'Participated in cohort-wide challenge rounds testing real-world operational decision making.',
-        'Qualified through multiple analytical evaluation filters to enter the Top 20 bracket.',
-        'Presented operational solutions before the judging panel in the grand finale.',
+        'Conducted by GoStop.',
+        'Selected among Top 20 from the entire cohort.',
+        'Finished Runner-up / 2nd place in the final.',
       ],
-      outcome: 'Selected among Top 20 from the entire cohort and finished as Runner-up / 2nd Place in the final.',
-      learning: 'Clarity of communication and structured operational prioritization are decisive when presenting complex solutions under pressure.',
+      outcome: 'Selected among Top 20 from the entire cohort. Finished Runner-up / 2nd place in the final.',
     },
     metrics: [
       { label: 'Cohort Standing', value: 'Top 20 Finalist' },
@@ -271,53 +305,49 @@ export const PROJECTS: Project[] = [
   {
     id: 'proptech-automation',
     title: 'PropTech Automation Workflow',
-    category: 'Automation / Operations Project',
-    tagline: 'Automated Operations Scenario on Make.com for Property Visit Dispatch',
+    category: 'Workflow Automation',
+    tagline: 'Make.com Event-Driven Automation Scenario',
     description:
-      'Team project created as part of a Sector Map activity. Built and demonstrated an event-driven automation scenario on Make.com modeled for PropTech customer visits.',
-    contribution: [
-      'Created/ran the workflow',
-      'Demonstrated the workflow',
-      'Explained the workflow modules/nodes',
-    ],
+      'Team project based on the PropTech sector demonstrating an automated property visit customer notification workflow on Make.com.',
+    tools: ['Make.com', 'Webhook Triggers', 'Data Filtering', 'Customer Dispatch'],
+    outcome: 'Built and demonstrated a Make.com automation workflow.',
     liveUrl: 'https://eu1.make.com/public/shared-scenario/UIApBIQz0dG/property-visit-notify-customer-of-poc',
     liveButtonText: 'View Workflow',
     details: {
-      context: 'Sector Map exploration analyzing process automation opportunities in the Real Estate & PropTech operational lifecycle.',
+      context: 'Team project based on the PropTech sector created as part of a Sector Map activity.',
       myRole: 'Workflow Creator & Technical Demonstrator',
       whatIDid: [
-        'Designed the multi-node Make.com workflow connecting booking triggers, data filtering, and customer communication channels.',
-        'Configured automated customer point-of-contact (POC) notification dispatches upon scheduled site inspection triggers.',
-        'Demonstrated the working scenario live and detailed module data structures and error-handling steps.',
+        'Team project based on the PropTech sector.',
+        'Built and demonstrated a Make.com automation workflow.',
       ],
-      outcome: 'A public, interactive Make.com scenario scenario blueprint available for live verification.',
-      learning: 'Decoupling event triggers from communication payloads ensures reliable operations even if downstream messaging APIs experience momentary lag.',
+      outcome: 'Built and demonstrated a Make.com automation workflow (publicly verified scenario blueprint).',
     },
     metrics: [
       { label: 'Platform', value: 'Make.com' },
       { label: 'Focus Sector', value: 'PropTech' },
-      { label: 'Status', value: 'Public Blueprint' },
+      { label: 'Project Format', value: 'Team Project' },
     ],
     accentColor: '#F59E0B',
   },
   {
     id: 'vaishnav-bazaar',
     title: 'Vaishnav Bazaar | Student Business Venture',
-    category: 'Student Business Venture',
-    tagline: 'Hands-On Campus Commerce: Procurement, Cost Negotiation & Customer Sales',
+    category: 'Student Ventures',
+    tagline: 'Student Business Venture • Founder & Operations Lead',
     description:
-      'Student-led commercial venture managing vendor pricing analysis, inventory leftover minimization, and strict purchase-bill documentation.',
+      'Student business venture managing vendor pricing analysis, inventory leftover minimization, and strict purchase-bill documentation on campus.',
+    outcome: '₹44,300 revenue • 120+ customers • 10+ vendors.',
     details: {
-      context: 'On-campus business venture designed to experience the full operational lifecycle of retail commerce from supplier sourcing to customer reconciliation.',
+      context: 'Student business venture designed to experience the full operational lifecycle of retail commerce from supplier sourcing to customer reconciliation.',
       myRole: 'Founder & Operations Lead',
       whatIDid: [
-        'Negotiated with 10+ vendors by analyzing supplier pricing to secure advantageous wholesale costs.',
+        'Organized and led as a hands-on student business venture on campus.',
+        'Negotiated with 10+ vendors by analyzing wholesale supplier pricing to secure advantageous wholesale costs.',
         'Maintained 80% purchase-bill records for customer transactions to ensure verifiable accounting.',
+        'Managed 120+ customers with an achieved 20% repeat customer rate.',
         'Reduced inventory leftovers through proactive supplier coordination and demand-matched product selection.',
-        'Managed front-of-house sales, customer engagement, and inventory restocking.',
       ],
-      outcome: 'Generated ₹44,300 in revenue from 120+ unique customers with an achieved 20% repeat customer rate.',
-      learning: 'Controlling inventory risk starts before purchasing; selecting the right vendor terms and keeping systematic transaction logs preserves working capital.',
+      outcome: 'Generated ₹44,300 in revenue from 120+ unique customers with 20% repeat customer rate and 80% purchase-bill records.',
     },
     metrics: [
       { label: 'Revenue Generated', value: '₹44,300' },
@@ -327,99 +357,6 @@ export const PROJECTS: Project[] = [
       { label: 'Billing Record Rate', value: '80%' },
     ],
     accentColor: '#4338CA',
-  },
-];
-
-export const ARTEFACTS: Artefact[] = [
-  {
-    id: 'stockflow-schema',
-    title: 'StockFlow Sports SKU & PO System Architecture',
-    type: 'System Blueprint / Technology',
-    badge: 'Interactive Tool',
-    description: 'Data structure map for 15 sports equipment and apparel SKUs with automated reorder thresholds and purchase-order lifecycles.',
-    meta: 'Python / Render Cloud / Web App',
-    iconType: 'code',
-    previewHighlights: [
-      { label: 'Catalog', value: '15 Sports SKUs' },
-      { label: 'Logic', value: 'AI Forecasting + Reorders' },
-      { label: 'Ledger', value: 'Goods Receiving to Invoicing' },
-    ],
-    details: 'Full cloud deployment of StockFlow handling stock movements, inventory valuation, supplier performance tracking, and goods-receiving verification.',
-  },
-  {
-    id: 'make-scenario',
-    title: 'Make.com PropTech Automated Dispatch Scenario',
-    type: 'Automation Blueprint',
-    badge: 'Public Scenario',
-    description: 'Multi-node visual workflow automating customer notifications and point-of-contact details upon property visit bookings.',
-    meta: 'Make.com Public Blueprint',
-    iconType: 'workflow',
-    previewHighlights: [
-      { label: 'Nodes', value: 'Multi-Step Trigger' },
-      { label: 'Payload', value: 'Customer & POC Notification' },
-      { label: 'Domain', value: 'PropTech Sector Map' },
-    ],
-    details: 'Shared Make.com scenario demonstrating automated dispatch logic, payload parsing, and error-handling sequences.',
-  },
-  {
-    id: 'taara-sales-log',
-    title: 'Team Taara Gemstone E-Commerce & Razorpay Records',
-    type: 'Business Challenge Output',
-    badge: 'Event Milestone',
-    description: 'Storefront checkout records and digital payment logs from the DLF College 1-day challenge.',
-    meta: 'Razorpay Gateway & E-Commerce Log',
-    iconType: 'table',
-    previewHighlights: [
-      { label: 'Team Revenue', value: '₹97,000 (1 Day)' },
-      { label: 'Integration', value: 'Razorpay Payment Flow' },
-      { label: 'Operation', value: 'Supplier Direct Sourcing' },
-    ],
-    details: 'Documentation of single-day team revenue generation, catalog pricing strategy, and vendor fulfillment at DLF College.',
-  },
-  {
-    id: 'vaishnav-ledger',
-    title: 'Vaishnav Bazaar Vendor Negotiation & Sales Ledger',
-    type: 'Venture Ledger & Bills',
-    badge: 'Commercial Evidence',
-    description: 'Audited vendor pricing analysis, 80% purchase-bill documentation, and customer order records.',
-    meta: '10+ Vendors / 120+ Customers',
-    iconType: 'document',
-    previewHighlights: [
-      { label: 'Total Revenue', value: '₹44,300' },
-      { label: 'Repeat Customers', value: '20%' },
-      { label: 'Compliance', value: '80% Purchase Bills' },
-    ],
-    details: 'Complete paper-trail and digital ledger detailing supplier pricing negotiations, margin calculations, and inventory surplus control.',
-  },
-  {
-    id: 'doodlez-dispatch-metrics',
-    title: 'Doodlez Stock Reconciliation & 3PL SLA Tracker',
-    type: 'Operations Dashboard',
-    badge: 'Internship Metric Log',
-    description: 'Framework tracking 150+ SKUs with 98% inventory accuracy and 20% return-TAT reduction across 5+ delivery partners.',
-    meta: 'Shopify / 3PL Coordination Log',
-    iconType: 'dashboard',
-    previewHighlights: [
-      { label: 'Accuracy', value: '98% on 150+ SKUs' },
-      { label: 'Dispatch', value: '95%+ On-Time' },
-      { label: 'Reverse Logistics', value: '-20% Return TAT' },
-    ],
-    details: 'Operational reconciliation procedures implemented to maintain high on-time dispatch and coordinate with 10+ replenishment vendors.',
-  },
-  {
-    id: 'gostop-odc-final',
-    title: 'GoStop ODC National Cohort Runner-Up Verification',
-    type: 'Competition Award',
-    badge: 'Top 20 & Runner-Up',
-    description: 'Official selection among Top 20 from entire cohort and 2nd place runner-up finish in the finale.',
-    meta: 'GoStop Cohort Challenge Final',
-    iconType: 'award',
-    previewHighlights: [
-      { label: 'Standing', value: 'Top 20 Nationwide' },
-      { label: 'Result', value: 'Runner-Up / 2nd Place' },
-      { label: 'Challenge', value: 'Business & Ops Case' },
-    ],
-    details: 'Verified milestone recognizing analytical strategy, problem decomposition, and final operational defense.',
   },
 ];
 

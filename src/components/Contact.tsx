@@ -52,7 +52,7 @@ export const Contact: React.FC = () => {
                 id="copy-email-btn"
                 type="button"
                 onClick={handleCopyEmail}
-                className="px-6 py-4 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold text-sm tracking-wider transition flex items-center space-x-2"
+                className="px-6 py-4 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold text-sm tracking-wider transition flex items-center space-x-2 cursor-pointer"
               >
                 {copied ? (
                   <>
@@ -121,7 +121,7 @@ export const Contact: React.FC = () => {
                 Direct Email: <strong className="text-white font-mono">{PERSONAL_INFO.contact.email}</strong>
               </div>
               <div>
-                Academic Base: <strong className="text-white">{PERSONAL_INFO.currently.institution}, {PERSONAL_INFO.currently.location}</strong>
+                Primary Focus: <strong className="text-white">{PERSONAL_INFO.primaryCareerFocus}</strong>
               </div>
             </div>
           </div>

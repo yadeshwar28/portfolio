@@ -32,6 +32,11 @@
   --color-brand-softLilac: #F1F0FB;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   text-rendering: optimizeLegibility;

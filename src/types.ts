@@ -6,11 +6,14 @@ export interface Project {
   description: string;
   features?: string[];
   product?: string;
+  tools?: string[];
   contribution?: string[];
   outcome?: string;
   information?: string;
   liveUrl?: string;
   liveButtonText?: string;
+  locationUrl?: string;
+  locationText?: string;
   details?: {
     context?: string;
     myRole?: string;
@@ -20,21 +23,6 @@ export interface Project {
   };
   metrics?: { label: string; value: string }[];
   accentColor?: string;
-}
-
-export interface Artefact {
-  id: string;
-  title: string;
-  type: string;
-  badge: string;
-  description: string;
-  meta: string;
-  iconType: 'code' | 'dashboard' | 'workflow' | 'document' | 'table' | 'award';
-  previewHighlights: {
-    label: string;
-    value: string;
-  }[];
-  details: string;
 }
 
 export interface Experience {

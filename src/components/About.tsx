@@ -1,172 +1,300 @@
-import React from 'react';
-import { PERSONAL_INFO } from '../data/portfolioData';
-import { GraduationCap, Briefcase, Rocket, Sparkles, Compass } from 'lucide-react';
+import React, { useState } from 'react';
+
+type BuildLogStep = 'learn' | 'test' | 'build' | 'improve';
 
 export const About: React.FC = () => {
+  const [isBuildOpen, setIsBuildOpen] = useState(false);
+  const [activeBuildStep, setActiveBuildStep] = useState<BuildLogStep>('learn');
+
+  const buildLogItems: Record<BuildLogStep, { label: string; text: string }> = {
+    learn: {
+      label: 'LEARN',
+      text: 'Building stronger Supply Chain & Operations fundamentals through coursework, projects and practical exposure.',
+    },
+    test: {
+      label: 'TEST',
+      text: 'Trying ideas through business challenges, workflows and hands-on problem solving.',
+    },
+    build: {
+      label: 'BUILD',
+      text: 'Turning what I learn into practical projects, systems and operational work.',
+    },
+    improve: {
+      label: 'IMPROVE',
+      text: "Using real experience to understand what worked, what didn't and what I can do better.",
+    },
+  };
+
   const journeyStages = [
     {
       step: '01',
-      title: 'Undergraduate Foundation',
+      title: 'THE FOUNDATION',
       subtitle: 'B.Com & Business Administration',
-      institution: 'D.G. Vaishnav College',
-      badgeColor: 'bg-indigo-50 text-[#4338CA] border-indigo-200',
-      icon: GraduationCap,
+      note: 'Education & background',
+      isCurrent: false,
     },
     {
       step: '02',
-      title: 'Hands-On Operations & Logistics',
-      subtitle: 'Doodlez, VYBN & Vels Solution Internships',
-      institution: 'Shopify / 3PL Dispatch / MIS',
-      badgeColor: 'bg-amber-50 text-[#B45309] border-amber-200',
-      icon: Briefcase,
+      title: 'ON THE GROUND',
+      subtitle: 'Hands-On Operations & Logistics',
+      note: 'Real-world operations exposure',
+      isCurrent: false,
     },
     {
       step: '03',
-      title: 'Ventures & Tech Prototyping',
-      subtitle: 'StockFlow AI, Team Taara (₹97k Rev), Make.com',
-      institution: 'Venture & Automation Execution',
-      badgeColor: 'bg-indigo-50 text-[#3730A3] border-indigo-200',
-      icon: Rocket,
+      title: 'IN BUILD MODE',
+      subtitle: 'Supply Chain, Operations & Practical Projects',
+      tag: 'LEARNING • BUILDING • TESTING',
+      note: 'Current development',
+      isCurrent: true,
+      activePoints: [
+        'Developing Supply Chain & Operations capabilities',
+        'Working on practical projects',
+        'Learning tools & frameworks',
+        'Applying what I learn',
+      ],
     },
     {
       step: '04',
-      title: 'Specialized Sports Management',
-      subtitle: 'PGP in Sports Management & Gaming',
-      institution: 'Masters’ Union, Gurugram',
-      badgeColor: 'bg-emerald-50 text-emerald-800 border-emerald-200',
-      icon: Sparkles,
+      title: 'THE DIRECTION',
+      subtitle: 'Sports Business & Operations Strategy',
+      note: 'Sports + operations',
+      isCurrent: false,
     },
     {
       step: '05',
-      title: 'Target Career Direction',
+      title: 'THE NEXT MOVE',
       subtitle: 'Sports & Athletic Supply Chain & Operations',
-      institution: 'Open to All Core SCM Roles',
-      badgeColor: 'bg-[#312E81] text-[#FBBF24] border-white/20',
-      icon: Compass,
-      isTarget: true,
+      note: 'Future career direction',
+      isCurrent: false,
     },
   ];
 
   return (
-    <section id="about" className="py-24 bg-white relative">
+    <section id="about" className="py-24 bg-white relative border-t border-slate-200/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Column: Visual 5-Stage Progression Pipeline (Pure Abstract Visual Architecture - NO PERSONAL PHOTO) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left Column: Editorial Progression Journey (Not Bulky Cards) */}
           <div
             id="about-visual-progression"
-            className="lg:col-span-6 bg-[#F1F0FB] p-8 sm:p-10 rounded-3xl border border-[#E0E7FF] relative shadow-sm"
+            className="lg:col-span-5 bg-[#F9F9FC] p-6 sm:p-8 rounded-3xl border border-slate-200/80 relative"
           >
-            <div className="text-xs font-extrabold uppercase tracking-wider text-[#4338CA] mb-6 flex items-center justify-between">
+            <div className="text-xs font-mono font-extrabold uppercase tracking-wider text-[#4338CA] mb-6 flex items-center justify-between">
               <span className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#4338CA]" />
-                Portfolio Progression System
+                <span className="w-2 h-2 rounded-full bg-[#4338CA]" />
+                <span>PORTFOLIO PROGRESSION SYSTEM</span>
               </span>
-              <span className="text-[#475569] font-mono text-[11px]">College → Industry</span>
+              <span className="text-[#64748B] text-[10px]">01 → 05</span>
             </div>
 
-            {/* Stages Stack */}
-            <div className="space-y-4">
-              {journeyStages.map((stage, idx) => {
-                const IconComponent = stage.icon;
+            {/* Editorial Timeline Track */}
+            <div className="relative border-l-2 border-slate-200 ml-3.5 pl-6 space-y-6">
+              {journeyStages.map((stage) => {
+                const isCurrent = stage.isCurrent;
+
                 return (
-                  <React.Fragment key={stage.step}>
+                  <div key={stage.step} className="relative group">
+                    {/* Node on line */}
                     <div
-                      className={`flex items-center space-x-4 p-3.5 rounded-2xl shadow-sm border transition-transform duration-200 hover:scale-[1.01] ${
-                        stage.isTarget
-                          ? 'bg-[#312E81] text-white border-[#4338CA]'
-                          : 'bg-white text-[#0F172A] border-slate-100'
+                      className={`absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full border-2 transition ${
+                        isCurrent
+                          ? 'bg-[#4338CA] border-white ring-4 ring-[#C7D2FE]'
+                          : 'bg-white border-slate-300 group-hover:border-[#4338CA]'
                       }`}
-                    >
-                      <div
-                        className={`w-10 h-10 rounded-xl font-black flex items-center justify-center text-xs shrink-0 ${
-                          stage.isTarget
-                            ? 'bg-[#F59E0B] text-[#0F172A]'
-                            : 'bg-indigo-50 text-[#4338CA]'
-                        }`}
-                      >
-                        {stage.step}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div
-                          className={`text-sm font-bold truncate ${
-                            stage.isTarget ? 'text-white' : 'text-[#0F172A]'
-                          }`}
-                        >
-                          {stage.title}
+                    />
+
+                    {/* Stage Details */}
+                    {isCurrent ? (
+                      <div className="p-4 rounded-xl bg-white border-l-4 border-[#4338CA] shadow-xs space-y-2">
+                        <div className="flex items-center justify-between gap-2 flex-wrap">
+                          <div className="flex items-baseline gap-2">
+                            <span className="font-mono text-xs font-extrabold text-[#4338CA]">
+                              {stage.step}
+                            </span>
+                            <span className="text-sm font-extrabold text-[#0F172A] tracking-tight">
+                              {stage.title}
+                            </span>
+                          </div>
+                          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-[#EEF2FF] text-[#4338CA] border border-[#C7D2FE]">
+                            ACTIVE STAGE
+                          </span>
                         </div>
-                        <div
-                          className={`text-xs truncate ${
-                            stage.isTarget ? 'text-[#C7D2FE]' : 'text-[#475569]'
-                          }`}
-                        >
+
+                        <div className="text-xs font-semibold text-[#1E293B]">
                           {stage.subtitle}
                         </div>
-                      </div>
-                      <span
-                        className={`text-[10px] font-bold px-2.5 py-1 rounded-md border shrink-0 ${stage.badgeColor}`}
-                      >
-                        {stage.institution}
-                      </span>
-                    </div>
 
-                    {idx < journeyStages.length - 1 && (
-                      <div className="flex justify-center -my-2.5">
-                        <div className="w-0.5 h-5 border-l-2 border-dashed border-[#C7D2FE]" />
+                        <div className="text-[11px] font-mono font-bold text-[#D97706] tracking-wider">
+                          {stage.tag}
+                        </div>
+
+                        <div className="text-[11px] text-[#64748B]">
+                          → {stage.note}
+                        </div>
+
+                        {stage.activePoints && (
+                          <div className="pt-2 border-t border-slate-100 grid grid-cols-1 gap-1 text-[11px] text-[#475569]">
+                            {stage.activePoints.map((pt) => (
+                              <div key={pt} className="flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#4338CA] shrink-0" />
+                                <span>{pt}</span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <div className="space-y-0.5 py-0.5">
+                        <div className="flex items-baseline gap-2">
+                          <span className="font-mono text-xs font-bold text-[#64748B]">
+                            {stage.step}
+                          </span>
+                          <span className="text-xs sm:text-sm font-bold text-[#0F172A]">
+                            {stage.title}
+                          </span>
+                        </div>
+                        <div className="text-xs text-[#475569]">
+                          {stage.subtitle}
+                        </div>
+                        <div className="text-[11px] text-[#64748B] italic">
+                          → {stage.note}
+                        </div>
                       </div>
                     )}
-                  </React.Fragment>
+                  </div>
                 );
               })}
             </div>
 
-            {/* Bottom Insight Footer */}
-            <div className="mt-6 pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs text-[#475569]">
-              <span className="font-medium">Primary Focus:</span>
-              <span className="font-extrabold text-[#4338CA]">
-                Supply Chain &amp; Operations in Sports
-              </span>
+            {/* Editorial Footer Line */}
+            <div className="mt-8 pt-4 border-t border-slate-200/70 text-[11px] text-[#64748B] flex items-center justify-between font-mono">
+              <span>TRAJECTORY</span>
+              <span className="font-bold text-[#4338CA]">Foundation → Field → Build</span>
             </div>
           </div>
 
-          {/* Right Column: Authentic Personal Narrative */}
-          <div className="lg:col-span-6 space-y-6">
-            <div className="text-xs font-extrabold uppercase tracking-widest text-[#4338CA] flex items-center gap-2">
-              <span className="w-6 h-0.5 bg-[#F59E0B] inline-block" />
-              <span>ABOUT ME</span>
+          {/* Right Column: Personal Narrative & Editorial Refinement */}
+          <div className="lg:col-span-7 space-y-6">
+            {/* Section Eyebrow + Subtle Editorial Notebook Annotation */}
+            <div className="space-y-3">
+              <div className="text-xs font-extrabold uppercase tracking-widest text-[#4338CA] flex items-center gap-2">
+                <span className="w-6 h-0.5 bg-[#F59E0B] inline-block" />
+                <span>ABOUT ME</span>
+              </div>
+
+              {/* Small Handwritten / Editorial-Style Annotation (Not a big card) */}
+              <div className="inline-flex items-baseline gap-2 py-1 px-2.5 rounded-md bg-[#FEF3C7]/70 border border-[#FDE68A] text-xs">
+                <span className="font-mono text-[10px] font-extrabold uppercase tracking-wider text-[#92400E]">
+                  CURRENT NOTE
+                </span>
+                <span className="text-[#78350F] italic font-serif text-[13px] tracking-tight">
+                  “I learn fastest when I have something real to figure out.”
+                </span>
+              </div>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight leading-snug">
-              Learning by Doing, <br />
-              Improving by Experience.
+            {/* New About Headline */}
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight leading-tight">
+              Still Building. <br />
+              <span className="text-[#4338CA]">Still Figuring Things Out.</span>
             </h2>
 
-            {/* Exact Content Quotation Box */}
-            <div className="p-6 rounded-2xl bg-[#EEF2FF] border-l-4 border-[#4338CA] text-[#0F172A] shadow-sm">
-              <p className="text-sm sm:text-base font-medium italic text-[#151336] leading-relaxed">
-                {PERSONAL_INFO.aboutQuote}
+            {/* Personal About Copy (Natural, Unpretentious Language) */}
+            <div className="space-y-4 text-sm sm:text-base text-[#334155] leading-relaxed">
+              <p className="font-medium text-[#0F172A]">
+                “I’m comfortable trying things, making mistakes, learning from the experience and doing it better the next time.”
+              </p>
+
+              <p>
+                My experience so far has given me practical exposure to inventory control, procurement coordination, order fulfillment, reverse logistics, vendor coordination and operational reporting.
+              </p>
+
+              <p>
+                I’m still early in my career. Sports is the industry I’d most like to work in, while building strong practical capability in Supply Chain &amp; Operations. I’m also open to opportunities across other industries where I can keep learning and contributing.
               </p>
             </div>
 
-            {/* Exact Body Content */}
-            <div className="space-y-4 text-sm sm:text-base text-[#334155] leading-relaxed">
-              <p>{PERSONAL_INFO.aboutParagraphs[0]}</p>
-              <p>{PERSONAL_INFO.aboutParagraphs[1]}</p>
+            {/* ONE Creative Interaction: What's In The Build? (Compact expand/collapse) */}
+            <div className="pt-2">
+              <button
+                id="whats-in-the-build-btn"
+                type="button"
+                role="button"
+                aria-expanded={isBuildOpen}
+                aria-controls="whats-in-the-build-content"
+                onClick={() => setIsBuildOpen(!isBuildOpen)}
+                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#4338CA] hover:text-[#312E81] transition py-1 focus:outline-none focus:ring-2 focus:ring-[#4338CA] focus:ring-offset-2 rounded cursor-pointer"
+              >
+                <span>{isBuildOpen ? "WHAT'S IN THE BUILD? ↑" : "WHAT'S IN THE BUILD? ↓"}</span>
+              </button>
+
+              {isBuildOpen && (
+                <div
+                  id="whats-in-the-build-content"
+                  className="mt-3 p-4 rounded-xl bg-slate-50 border border-slate-200/90 text-xs text-[#334155] space-y-2.5 transition-all duration-200"
+                >
+                  <div className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#64748B]">
+                    IN ACTIVE DEVELOPMENT
+                  </div>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-0.5">
+                    <li className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#4338CA] shrink-0" />
+                      <span className="font-medium">Supply Chain &amp; Operations skills</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#4338CA] shrink-0" />
+                      <span className="font-medium">Practical projects</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#4338CA] shrink-0" />
+                      <span className="font-medium">Tools and technical learning</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#4338CA] shrink-0" />
+                      <span className="font-medium">Real-world problem solving</span>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
 
-            {/* Authentic Summary Highlights */}
-            <div className="pt-4 grid grid-cols-3 gap-3 text-center">
-              <div className="p-3.5 bg-[#F8FAFC] rounded-2xl border border-slate-200">
-                <div className="text-xl font-black text-[#4338CA]">150+</div>
-                <div className="text-[11px] font-bold text-[#475569] mt-0.5">SKUs Managed</div>
+            {/* Small Interactive Build Log: LEARN → TEST → BUILD → IMPROVE */}
+            <div className="pt-4 border-t border-slate-100">
+              <div className="flex items-center flex-wrap gap-2 text-xs font-mono font-bold">
+                {(['learn', 'test', 'build', 'improve'] as BuildLogStep[]).map((step, idx) => {
+                  const isActive = activeBuildStep === step;
+
+                  return (
+                    <React.Fragment key={step}>
+                      <button
+                        id={`build-log-step-${step}`}
+                        type="button"
+                        role="tab"
+                        aria-selected={isActive}
+                        onClick={() => setActiveBuildStep(step)}
+                        className={`pb-0.5 border-b-2 transition cursor-pointer ${
+                          isActive
+                            ? 'border-[#4338CA] text-[#4338CA] font-extrabold'
+                            : 'border-transparent text-[#64748B] hover:text-[#0F172A]'
+                        }`}
+                      >
+                        {buildLogItems[step].label}
+                      </button>
+                      {idx < 3 && (
+                        <span className="text-[#CBD5E1] select-none text-xs">→</span>
+                      )}
+                    </React.Fragment>
+                  );
+                })}
               </div>
-              <div className="p-3.5 bg-[#F8FAFC] rounded-2xl border border-slate-200">
-                <div className="text-xl font-black text-[#D97706]">₹97k</div>
-                <div className="text-[11px] font-bold text-[#475569] mt-0.5">Team Drop-Ship Rev</div>
-              </div>
-              <div className="p-3.5 bg-[#F8FAFC] rounded-2xl border border-slate-200">
-                <div className="text-xl font-black text-[#4338CA]">Shopify</div>
-                <div className="text-[11px] font-bold text-[#475569] mt-0.5">&amp; 3PL Operations</div>
-              </div>
+
+              {/* Display one statement at a time beneath */}
+              <p
+                id="build-log-statement"
+                className="mt-3 text-xs sm:text-sm text-[#475569] leading-relaxed bg-[#F8FAFC] p-3.5 rounded-xl border border-slate-100 italic font-medium"
+              >
+                “{buildLogItems[activeBuildStep].text}”
+              </p>
             </div>
           </div>
         </div>
