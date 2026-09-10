@@ -1,5 +1,6 @@
 import React from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import { Logo } from './Logo';
 import { ArrowUp } from 'lucide-react';
 
 export const Footer: React.FC = () => {
@@ -13,19 +14,7 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Brand Monogram & Persona */}
           <div className="flex items-center space-x-3.5">
-            <div className="w-10 h-10 rounded-xl bg-[#4338CA] flex items-center justify-center text-[#FBBF24] font-black shadow-md">
-              <svg
-                className="w-5 h-5 text-[#FBBF24]"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                viewBox="0 0 24 24"
-              >
-                <circle cx="6" cy="6" r="3" />
-                <circle cx="18" cy="6" r="3" />
-                <path d="M8.5 7.5L15.5 7.5" />
-              </svg>
-            </div>
+            <Logo className="w-11 h-11 shrink-0 shadow-md shadow-[#1E1B4B]/30" />
             <div>
               <div className="text-white font-extrabold tracking-tight text-base">
                 {PERSONAL_INFO.name}

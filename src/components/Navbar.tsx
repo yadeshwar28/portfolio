@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import { Logo } from './Logo';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 
 interface NavbarProps {
@@ -53,25 +54,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             href="#hero"
             className="flex items-center space-x-3.5 group focus:outline-none focus:ring-2 focus:ring-[#F59E0B] rounded-xl p-1"
           >
-            <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center shadow-md shadow-[#F59E0B]/25 group-hover:scale-105 transition-transform duration-300">
-              {/* Supply Node Vector Glyphs */}
-              <svg
-                className="w-6 h-6 text-[#0F172A]"
-                fill="none"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2.3"
-                viewBox="0 0 24 24"
-              >
-                <circle cx="6" cy="6" r="3" />
-                <circle cx="18" cy="6" r="3" />
-                <circle cx="12" cy="18" r="3" />
-                <path d="M8.5 7.5L10.5 15.5" />
-                <path d="M15.5 7.5L13.5 15.5" />
-                <path d="M9 6h6" />
-              </svg>
-            </div>
+            <Logo className="w-11 h-11 shrink-0 shadow-md shadow-[#1E1B4B]/30 group-hover:scale-105 transition-transform duration-300" />
             <div>
               <div className="text-white font-extrabold tracking-tight text-lg leading-tight">
                 {PERSONAL_INFO.name}
